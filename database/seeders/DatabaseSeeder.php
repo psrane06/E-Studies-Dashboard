@@ -108,10 +108,12 @@ class DatabaseSeeder extends Seeder
 
         DB::table('courses')->insert(
             [
-                'title' => 'Intro to CS',
+                'course_name' => 'Intro to CS',
                 'thumbnail' => "storage/app/public/thumbnails/fireship.png",
                 'user_id' => 1,
                 'description' => 'This is Intro to CS.',
+                'start_date' => now(),
+                'end_date' => now(),
                 'created_at' => now(),
                 'updated_at' => now()
             ]

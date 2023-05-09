@@ -19,157 +19,157 @@
 ====== End ======*/
 
 $(document).ready(function () {
-  "use strict";
+    "use strict";
 
-  /*======== 1. SCROLLBAR CONTENT ========*/
+    /*======== 1. SCROLLBAR CONTENT ========*/
 
-  /*======== 2. TOOLTIPS AND POPOVER ========*/
-  $('[data-toggle="tooltip"]').tooltip({
-    container: "body",
-    template:
-      '<div class="tooltip" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>',
-  });
-  $('[data-toggle="popover"]').popover();
+    /*======== 2. TOOLTIPS AND POPOVER ========*/
+    $('[data-toggle="tooltip"]').tooltip({
+        container: "body",
+        template:
+            '<div class="tooltip" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>',
+    });
+    $('[data-toggle="popover"]').popover();
 
 
-  /*======== 5. COUNTRY SALES RANGS ========*/
-  var countrySalesRange = $("#country-sales-range");
-  if (countrySalesRange.length != 0) {
-    var start = moment().subtract(29, "days");
-    var end = moment();
+    /*======== 5. COUNTRY SALES RANGS ========*/
+    var countrySalesRange = $("#country-sales-range");
+    if (countrySalesRange.length != 0) {
+        var start = moment().subtract(29, "days");
+        var end = moment();
 
-    function cb(start, end) {
-      $("#country-sales-range .date-holder").html(
-        start.format("MMMM D, YYYY") + " - " + end.format("MMMM D, YYYY")
-      );
+        function cb(start, end) {
+            $("#country-sales-range .date-holder").html(
+                start.format("MMMM D, YYYY") + " - " + end.format("MMMM D, YYYY")
+            );
+        }
+
+        countrySalesRange.daterangepicker(
+            {
+                startDate: start,
+                endDate: end,
+                opens: "left",
+                ranges: {
+                    Today: [moment(), moment()],
+                    Yesterday: [
+                        moment().subtract(1, "days"),
+                        moment().subtract(1, "days"),
+                    ],
+                    "Last 7 Days": [moment().subtract(6, "days"), moment()],
+                    "Last 30 Days": [moment().subtract(29, "days"), moment()],
+                    "This Month": [moment().startOf("month"), moment().endOf("month")],
+                    "Last Month": [
+                        moment().subtract(1, "month").startOf("month"),
+                        moment().subtract(1, "month").endOf("month"),
+                    ],
+                },
+            },
+            cb
+        );
+
+        cb(start, end);
+    }
+    var miniStatusRanges = $("#mini-status-range");
+
+    if (miniStatusRanges.length != 0) {
+        var start = moment().subtract(29, "days");
+        var end = moment();
+
+        function cb(start, end) {
+            $("#mini-status-range .date-holder").html(
+                start.format("MMMM D, YYYY") + " - " + end.format("MMMM D, YYYY")
+            );
+        }
+
+        miniStatusRanges.daterangepicker(
+            {
+                startDate: start,
+                endDate: end,
+                opens: "left",
+                ranges: {
+                    Today: [moment(), moment()],
+                    Yesterday: [
+                        moment().subtract(1, "days"),
+                        moment().subtract(1, "days"),
+                    ],
+                    "Last 7 Days": [moment().subtract(6, "days"), moment()],
+                    "Last 30 Days": [moment().subtract(29, "days"), moment()],
+                    "This Month": [moment().startOf("month"), moment().endOf("month")],
+                    "Last Month": [
+                        moment().subtract(1, "month").startOf("month"),
+                        moment().subtract(1, "month").endOf("month"),
+                    ],
+                },
+            },
+            cb
+        );
+
+        cb(start, end);
     }
 
-    countrySalesRange.daterangepicker(
-      {
-        startDate: start,
-        endDate: end,
-        opens: "left",
-        ranges: {
-          Today: [moment(), moment()],
-          Yesterday: [
-            moment().subtract(1, "days"),
-            moment().subtract(1, "days"),
-          ],
-          "Last 7 Days": [moment().subtract(6, "days"), moment()],
-          "Last 30 Days": [moment().subtract(29, "days"), moment()],
-          "This Month": [moment().startOf("month"), moment().endOf("month")],
-          "Last Month": [
-            moment().subtract(1, "month").startOf("month"),
-            moment().subtract(1, "month").endOf("month"),
-          ],
-        },
-      },
-      cb
-    );
-
-    cb(start, end);
-  }
-  var miniStatusRanges = $("#mini-status-range");
-
-  if (miniStatusRanges.length != 0) {
-    var start = moment().subtract(29, "days");
-    var end = moment();
-
-    function cb(start, end) {
-      $("#mini-status-range .date-holder").html(
-        start.format("MMMM D, YYYY") + " - " + end.format("MMMM D, YYYY")
-      );
+    /*======== 6. JVECTORMAP HOME WORLD ========*/
+    var countryWithMarker = $("#world-country-with-marker");
+    if (countryWithMarker.length != 0) {
+        var colorData = {
+            CA: 106,
+            US: 166,
+            RU: 166,
+            AR: 166,
+            AU: 120,
+            IN: 106,
+        };
+        countryWithMarker.vectorMap({
+            map: "world_mill",
+            backgroundColor: "#fff",
+            zoomOnScroll: false,
+            regionStyle: {
+                initial: {
+                    fill: "#cbccd4",
+                },
+            },
+            series: {
+                regions: [
+                    {
+                        values: colorData,
+                        scale: ["#9e6cdf", "#dfe0e4", "#f9aec9"],
+                    },
+                ],
+            },
+            markers: [
+                { latLng: [56.13, -106.34], name: "Vatican City" },
+                { latLng: [37.09, -95.71], name: "Washington" },
+                { latLng: [-14.23, -51.92], name: "Brazil" },
+                { latLng: [17.6078, 8.0817], name: "Tuvalu" },
+                { latLng: [47.14, 9.52], name: "Liechtenstein" },
+                { latLng: [20.59, 78.96], name: "India" },
+                { latLng: [61.52, 105.31], name: "Russia" },
+            ],
+        });
     }
 
-    miniStatusRanges.daterangepicker(
-      {
-        startDate: start,
-        endDate: end,
-        opens: "left",
-        ranges: {
-          Today: [moment(), moment()],
-          Yesterday: [
-            moment().subtract(1, "days"),
-            moment().subtract(1, "days"),
-          ],
-          "Last 7 Days": [moment().subtract(6, "days"), moment()],
-          "Last 30 Days": [moment().subtract(29, "days"), moment()],
-          "This Month": [moment().startOf("month"), moment().endOf("month")],
-          "Last Month": [
-            moment().subtract(1, "month").startOf("month"),
-            moment().subtract(1, "month").endOf("month"),
-          ],
-        },
-      },
-      cb
-    );
+    var usVectorMapWithoutMarker = $("#us-vector-map-without-marker");
+    if (usVectorMapWithoutMarker.length != 0) {
+        usVectorMapWithoutMarker.vectorMap({
+            map: "us_aea",
+            backgroundColor: "#transparent",
+            zoomOnScroll: false,
+            regionStyle: {
+                initial: {
+                    fill: "#eff0f5",
+                },
+            },
+            markerStyle: {
+                hover: {
+                    stroke: "transparent",
+                },
+            },
+        });
+    }
 
-    cb(start, end);
-  }
-
-  /*======== 6. JVECTORMAP HOME WORLD ========*/
-  var countryWithMarker = $("#world-country-with-marker");
-  if (countryWithMarker.length != 0) {
-    var colorData = {
-      CA: 106,
-      US: 166,
-      RU: 166,
-      AR: 166,
-      AU: 120,
-      IN: 106,
-    };
-    countryWithMarker.vectorMap({
-      map: "world_mill",
-      backgroundColor: "#fff",
-      zoomOnScroll: false,
-      regionStyle: {
-        initial: {
-          fill: "#cbccd4",
-        },
-      },
-      series: {
-        regions: [
-          {
-            values: colorData,
-            scale: ["#9e6cdf", "#dfe0e4", "#f9aec9"],
-          },
-        ],
-      },
-      markers: [
-        { latLng: [56.13, -106.34], name: "Vatican City" },
-        { latLng: [37.09, -95.71], name: "Washington" },
-        { latLng: [-14.23, -51.92], name: "Brazil" },
-        { latLng: [17.6078, 8.0817], name: "Tuvalu" },
-        { latLng: [47.14, 9.52], name: "Liechtenstein" },
-        { latLng: [20.59, 78.96], name: "India" },
-        { latLng: [61.52, 105.31], name: "Russia" },
-      ],
-    });
-  }
-
-  var usVectorMapWithoutMarker = $("#us-vector-map-without-marker");
-  if (usVectorMapWithoutMarker.length != 0) {
-    usVectorMapWithoutMarker.vectorMap({
-      map: "us_aea",
-      backgroundColor: "#transparent",
-      zoomOnScroll: false,
-      regionStyle: {
-        initial: {
-          fill: "#eff0f5",
-        },
-      },
-      markerStyle: {
-        hover: {
-          stroke: "transparent",
-        },
-      },
-    });
-  }
-
-  /*======== 7. CODE EDITOR ========*/
-  var codeEditor = document.getElementById("code-editor");
-  if (codeEditor) {
-    var htmlCode = `<html style="color: green">
+    /*======== 7. CODE EDITOR ========*/
+    var codeEditor = document.getElementById("code-editor");
+    if (codeEditor) {
+        var htmlCode = `<html style="color: green">
   <!-- this is a comment -->
   <head>"
     <title>HTML Example</title>
@@ -180,146 +180,133 @@ $(document).ready(function () {
   </body>
 </html>`;
 
-    var myCodeMirror = CodeMirror(codeEditor, {
-      value: htmlCode,
-      mode: "xml",
-      extraKeys: { "Ctrl-Space": "autocomplete" },
-      lineNumbers: true,
-      indentWithTabs: true,
-      lineWrapping: true,
-    });
-  }
-
-  /*======== 10. LOADING BUTTON ========*/
-  var laddaButton = $(".ladda-button");
-  if (laddaButton.length != 0) {
-    Ladda.bind(".ladda-button", {
-      timeout: 1000,
-    });
-  }
-
-  /*======== 11. TOASTER ========*/
-  var toaster = $("#toaster");
-  function callToaster(positionClass) {
-    toastr.options = {
-      closeButton: true,
-      debug: false,
-      newestOnTop: false,
-      progressBar: true,
-      positionClass: positionClass,
-      preventDuplicates: false,
-      onclick: null,
-      showDuration: "300",
-      hideDuration: "1000",
-      timeOut: "5000",
-      extendedTimeOut: "1000",
-      showEasing: "swing",
-      hideEasing: "linear",
-      showMethod: "fadeIn",
-      hideMethod: "fadeOut",
-    };
-    toastr.success("Welcome to Mono Dashboard", "Howdy!");
-  }
-
-  if (toaster.length != 0) {
-    if (document.dir != "rtl") {
-      callToaster("toast-top-right");
-    } else {
-      callToaster("toast-top-left");
+        var myCodeMirror = CodeMirror(codeEditor, {
+            value: htmlCode,
+            mode: "xml",
+            extraKeys: { "Ctrl-Space": "autocomplete" },
+            lineNumbers: true,
+            indentWithTabs: true,
+            lineWrapping: true,
+        });
     }
-  }
 
-  /*======== 12. INFO BAR ========*/
-  var infoTeoaset = $(
-    "#toaster-info, #toaster-success, #toaster-warning, #toaster-danger"
-  );
-  if (infoTeoaset !== null) {
-    infoTeoaset.on("click", function () {
-      toastr.options = {
-        closeButton: true,
-        debug: false,
-        newestOnTop: false,
-        progressBar: false,
-        positionClass: "toast-top-right",
-        preventDuplicates: false,
-        onclick: null,
-        showDuration: "3000",
-        hideDuration: "1000",
-        timeOut: "5000",
-        extendedTimeOut: "1000",
-        showEasing: "swing",
-        hideEasing: "linear",
-        showMethod: "fadeIn",
-        hideMethod: "fadeOut",
-      };
-      var thisId = $(this).attr("id");
-      if (thisId === "toaster-info") {
-        toastr.info("Welcome to Mono", " Info message");
-      } else if (thisId === "toaster-success") {
-        toastr.success("Welcome to Mono", "Success message");
-      } else if (thisId === "toaster-warning") {
-        toastr.warning("Welcome to Mono", "Warning message");
-      } else if (thisId === "toaster-danger") {
-        toastr.error("Welcome to Mono", "Danger message");
-      }
-    });
-  }
+    /*======== 10. LOADING BUTTON ========*/
+    var laddaButton = $(".ladda-button");
+    if (laddaButton.length != 0) {
+        Ladda.bind(".ladda-button", {
+            timeout: 1000,
+        });
+    }
 
-  /*======== 13. PROGRESS BAR ========*/
-//   NProgress.done();
+    /*======== 11. TOASTER ========*/
+    var toaster = $("#toaster");
+    function callToaster(positionClass) {
+        toastr.options = {
+            closeButton: true,
+            debug: false,
+            newestOnTop: false,
+            progressBar: true,
+            positionClass: positionClass,
+            preventDuplicates: false,
+            onclick: null,
+            showDuration: "300",
+            hideDuration: "1000",
+            timeOut: "5000",
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut",
+        };
+        toastr.success("Welcome to Mono Dashboard", "Howdy!");
+    }
 
-  /*======== 14. DATA TABLE ========*/
-  var productsTable = $("#productsTable");
-  if (productsTable.length != 0) {
-    productsTable.DataTable({
-      info: false,
-      lengthChange: false,
-      lengthMenu: [
-        [5, 10, 15, -1],
-        [5, 10, 15, "All"],
-      ],
-      scrollX: true,
-      order: [[2, "asc"]],
-      columnDefs: [
-        {
-          orderable: false,
-          targets: [, 0, 6, -1],
-        },
-      ],
-      language: {
-        search: "_INPUT_",
-        searchPlaceholder: "Search...",
-      },
-    });
-  }
+    if (toaster.length != 0) {
+        if (document.dir != "rtl") {
+            callToaster("toast-top-right");
+        } else {
+            callToaster("toast-top-left");
+        }
+    }
 
-  var productSale = $("#product-sale");
-  if (productSale.length != 0) {
-    productSale.DataTable({
-      info: false,
-      paging: false,
-      searching: false,
-      scrollX: true,
-      order: [[0, "asc"]],
-      columnDefs: [
-        {
-          orderable: false,
-          targets: [-1],
-        },
-      ],
-    });
-  }
+    /*======== 12. INFO BAR ========*/
+    var infoTeoaset = $(
+        "#toaster-info, #toaster-success, #toaster-warning, #toaster-danger"
+    );
+    if (infoTeoaset !== null) {
+        infoTeoaset.on("click", function () {
+            toastr.options = {
+                closeButton: true,
+                debug: false,
+                newestOnTop: false,
+                progressBar: false,
+                positionClass: "toast-top-right",
+                preventDuplicates: false,
+                onclick: null,
+                showDuration: "3000",
+                hideDuration: "1000",
+                timeOut: "5000",
+                extendedTimeOut: "1000",
+                showEasing: "swing",
+                hideEasing: "linear",
+                showMethod: "fadeIn",
+                hideMethod: "fadeOut",
+            };
+            var thisId = $(this).attr("id");
+            if (thisId === "toaster-info") {
+                toastr.info("Welcome to Mono", " Info message");
+            } else if (thisId === "toaster-success") {
+                toastr.success("Welcome to Mono", "Success message");
+            } else if (thisId === "toaster-warning") {
+                toastr.warning("Welcome to Mono", "Warning message");
+            } else if (thisId === "toaster-danger") {
+                toastr.error("Welcome to Mono", "Danger message");
+            }
+        });
+    }
 
+    /*======== 13. PROGRESS BAR ========*/
+    //   NProgress.done();
 
-  /*======== 7. CIRCLE PROGRESS ========*/
-  var circle = $(".circle");
-  var gray = "#f5f6fa";
+    /*======== 14. DATA TABLE ========*/
+    var productsTable = $("#productsTable");
+    if (productsTable.length != 0) {
+        productsTable.DataTable({
+            autowidth: true,
+            info: false,
+            lengthChange: false,
+            lengthMenu: [
+                [5, 10, 15, -1],
+                [5, 10, 15, "All"],
+            ],
+            scrollX: true,
+            order: [[2, "asc"]],
+            columnDefs: [
+                {
+                    orderable: false,
+                    targets: [, 0, 6, -1],
+                },
+                {
+                    className: "description-cell",
+                    targets: [4]
+                }
+            ],
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "Search...",
+            },
+        });
+    }
 
-  if (circle.length != 0) {
-    circle.circleProgress({
-      lineCap: "round",
-      startAngle: 4.8,
-      emptyFill: [gray],
-    });
-  }
+    /*======== 7. CIRCLE PROGRESS ========*/
+    var circle = $(".circle");
+    var gray = "#f5f6fa";
+
+    if (circle.length != 0) {
+        circle.circleProgress({
+            lineCap: "round",
+            startAngle: 4.8,
+            emptyFill: [gray],
+        });
+    }
 });
