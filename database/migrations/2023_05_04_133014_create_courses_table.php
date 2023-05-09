@@ -12,12 +12,13 @@ return new class extends Migration {
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('thumbnail');
+            $table->string('course_name');
+            $table->string('thumbnail')->default('storage/app/public/thumbnails/fireship.png')->nullable();
             $table->foreignId('user_id')->comment('id of creator')->constrained();
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->string('description');
             $table->timestamps();
-
         });
     }
 

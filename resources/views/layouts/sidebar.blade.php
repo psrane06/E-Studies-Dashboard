@@ -37,27 +37,24 @@
                         <i class="mdi mdi-email"></i>
                         <span class="nav-text">My Courses</span> <b class="caret"></b>
                     </a>
-                    <ul class="collapse" id="email" data-parent="#sidebar-menu">
+                    <ul class="collapse" id="courses" data-parent="#sidebar-menu">
                         <div class="sub-menu">
 
                             <li>
                                 <a class="sidenav-item-link" href="email-inbox.html">
                                     <span class="nav-text">All Course</span>
-
                                 </a>
                             </li>
 
                             <li>
-                                <a class="sidenav-item-link" href="email-details.html">
+                                <a class="sidenav-item-link" href="/courses/list">
                                     <span class="nav-text">Completed</span>
-
                                 </a>
                             </li>
 
                             <li>
                                 <a class="sidenav-item-link" href="email-compose.html">
                                     <span class="nav-text">On Going</span>
-
                                 </a>
                             </li>
 

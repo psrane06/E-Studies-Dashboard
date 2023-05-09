@@ -39,23 +39,15 @@
                         </li>
 
                     </ul> --}}
-
                 </div>
 
-                <ul class="nav navbar-nav">
+                <div class="nav navbar-nav">
                     <!-- Offcanvas -->
-                    <li class="custom-dropdown">
-                        <a class="offcanvas-toggler active custom-dropdown-toggler" data-offcanvas="contact-off"
-                            href="javascript:">
-                            <i class="mdi mdi-contacts icon"></i>
-                        </a>
-                    </li>
-                    <li class="custom-dropdown">
+                    {{-- <li class="custom-dropdown">
                         <button class="notify-toggler custom-dropdown-toggler">
                             <i class="mdi mdi-bell-outline icon"></i>
                             <span class="badge badge-xs rounded-circle">21</span>
                         </button>
-                        <div class="dropdown-notify">
 
                             <header>
                                 <div class="nav nav-underline" id="nav-tab" role="tablist">
@@ -320,12 +312,10 @@
                                 </div>
                             </footer>
                         </div>
-                    </li>
+                    </li> --}}
                     <!-- User Account -->
-                    <li class="dropdown user-menu">
-                        <button class="dropdown-toggle nav-link" data-toggle="dropdown">
-                            <img src="images/user/user-xs-01.jpg" class="user-image rounded-circle"
-                                alt="User Image" />
+                    {{-- <li class="dropdown user-menu">
+                        <button class="dropdown-toggle nav-link" type="button" data-toggle="dropdown">
                             <span class="d-none d-lg-inline-block">John Doe</span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right">
@@ -359,8 +349,37 @@
                                     Out </a>
                             </li>
                         </ul>
+                    </li> --}}
+                    <li>
+                        <div class="dropdown d-inline-block mb-1">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+                                Primary
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>
                     </li>
-                </ul>
+                    @auth
+                        <li>
+                            <span> Welcome {{ auth()->user()->name }}</span>
+                        </li>
+                        <li>
+                            <form class="inline" method="POST" action="/logout">
+                                @csrf
+                                <button type="submit">
+                                    <i class="mdi mdi-logout"></i>Logout
+                                </button>
+                            </form>
+                        </li>
+                    @else
+                        <a href="/login">Login</a>
+                        <a href="/register">Register</a>
+                    @endauth
+                </div>
             </div>
         </nav>
     </header>
