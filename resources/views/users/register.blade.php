@@ -22,28 +22,28 @@
                                         <input type="text" class="form-control input-lg" id="name"
                                             aria-describedby="nameHelp" placeholder="Name" name="name" value="{{ old('name') }}">
                                         @error('name')
-                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                            <p class="text-danger text-xs mt-1">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-12 mb-4">
                                         <input type="email" class="form-control input-lg" id="email"
                                             aria-describedby="emailHelp" placeholder="Email" name="email" value="{{ old('email') }}">
                                         @error('email')
-                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                            <p class="text-danger text-xs mt-1">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-12 ">
                                         <input type="password" class="form-control input-lg" id="password"
                                             placeholder="Password" name="password" value="{{ old('password') }}">
                                         @error('password')
-                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                            <p class="text-danger text-xs mt-1">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-12 ">
                                         <input type="password" class="form-control input-lg" id="password_confirmation"
                                             placeholder="Confirm Password" name="password_confirmation" value="{{ old('password_confirmation') }}">
                                         @error('cpassword')
-                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                            <p class="text-danger text-xs mt-1">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div class="col-md-12">
@@ -54,9 +54,7 @@
                                                 <label class="custom-control-label" for="customCheck2">I Agree the terms
                                                     and conditions.</label>
                                             </div>
-
                                         </div> --}}
-
                                         <button type="submit" class="btn btn-primary btn-pill mb-4">Sign Up</button>
 
                                         <p>Already have an account?

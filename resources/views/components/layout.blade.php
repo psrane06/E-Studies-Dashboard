@@ -80,7 +80,7 @@
 
     {{-- <div id="toaster"></div> --}}
 
-    @if (request()->is('register','login'))
+    @if (request()->is('register','login','forgot'))
         <main>
             {{ $slot }}
         </main>
@@ -99,6 +99,7 @@
     @include('layouts.footer')
 
     <script src="{{ asset('theme/plugins/daterangepicker/daterangepicker.js') }}"></script>
+
     <script src="{{ asset('theme/plugins/simplebar/simplebar.min.js') }}"></script>
     <script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
     <script src="{{ asset('theme/plugins/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js') }}"></script>

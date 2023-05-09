@@ -8,7 +8,7 @@
                 <span class="sr-only">Toggle navigation</span>
             </button>
 
-            <span class="page-title">dashboard</span>
+            <span class="page-title">{{ $title ?? '' }}</span>
 
             <div class="navbar-right ">
 
@@ -350,19 +350,6 @@
                             </li>
                         </ul>
                     </li> --}}
-                    <li>
-                        <div class="dropdown d-inline-block mb-1">
-                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
-                                Primary
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </div>
-                    </li>
                     @auth
                         <li>
                             <span> Welcome {{ auth()->user()->name }}</span>
@@ -376,8 +363,12 @@
                             </form>
                         </li>
                     @else
-                        <a href="/login">Login</a>
-                        <a href="/register">Register</a>
+                        <li>
+                            <a href="/login">Login</a>
+                        </li>
+                        <li>
+                            <a href="/register">Register</a>
+                        </li>
                     @endauth
                 </div>
             </div>

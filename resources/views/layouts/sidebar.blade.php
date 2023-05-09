@@ -2,7 +2,7 @@
 {{--  ====================================
               ——— LEFT SIDEBAR WITH OUT FOOTER
             ===================================== --}}
-<aside class="left-sidebar sidebar-dark" id="left-sidebar">
+<aside class="left-sidebar sidebar-light" id="left-sidebar">
     <div id="sidebar" class="sidebar">
         <!-- Aplication Brand -->
         <div class="app-brand">
@@ -17,17 +17,17 @@
             <!-- sidebar menu -->
             <ul class="nav sidebar-inner" id="sidebar-menu">
 
-                <li class="active">
-                    <a class="sidenav-item-link" href="index.html">
+                <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
+                    <a class="sidenav-item-link" href="/dashboard">
                         <i class="mdi mdi-briefcase-account-outline"></i>
                         <span class="nav-text">Dashboard</span>
                     </a>
                 </li>
 
-                <li>
-                    <a class="sidenav-item-link" href="analytics.html">
+                <li class="{{ request()->is('courses/create') ? 'active' : '' }}">
+                    <a class="sidenav-item-link" href="/courses/create">
                         <i class="mdi mdi-chart-line"></i>
-                        <span class="nav-text">Badges</span>
+                        <span class="nav-text">Add Course</span>
                     </a>
                 </li>
 
