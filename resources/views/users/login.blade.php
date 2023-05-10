@@ -8,7 +8,7 @@
                             <div class="app-brand w-100 d-flex justify-content-center border-bottom-0">
                                 <a class="w-auto pl-0" href="/login">
                                     <img src="{{ asset('theme/images/logo.png') }}" alt="Mono">
-                                    <span class="brand-name text-dark">MONO</span>
+                                    <span class="brand-name text-dark">E-Studies</span>
                                 </a>
                             </div>
                         </div>
@@ -21,7 +21,8 @@
                                 <div class="row">
                                     <div class="form-group col-md-12 mb-4">
                                         <input type="email" class="form-control input-lg" id="email"
-                                            aria-describedby="emailHelp" placeholder="email" name="email" value="{{ old('email') }}">
+                                            aria-describedby="emailHelp" placeholder="email" name="email"
+                                            value="{{ old('email') }}">
                                         @error('email')
                                             <p class="text-danger text-xs mt-1">{{ $message }}</p>
                                         @enderror

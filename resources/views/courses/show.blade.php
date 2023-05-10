@@ -1,3 +1,5 @@
 <x-layout>
-    show
+    <div class="content">
+        show
+    </div>
 </x-layout>

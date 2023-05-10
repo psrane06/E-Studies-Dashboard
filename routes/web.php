@@ -38,3 +38,5 @@ Route::get('/courses/create', [CourseController::class, 'create'])->middleware('
 // store course
 Route::get('/courses', [CourseController::class, 'store']);
 
+Route::get('/courses/list', [CourseController::class, 'index']);
+

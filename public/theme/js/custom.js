@@ -289,7 +289,15 @@ $(document).ready(function () {
                 {
                     className: "description-cell",
                     targets: [4]
-                }
+                },
+                {
+                    'targets': [0],
+                    'searchable': false,
+                    'orderable':false,
+                    'render': function (data, type, full, meta) {
+                    return '<img src="'+data+'" />';
+                                      }
+                },
             ],
             language: {
                 search: "_INPUT_",

@@ -14,8 +14,8 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('course_id')->constrained();
-            $table->boolean('course_enrolled');
-            $table->integer('course_completed');
+            $table->boolean('course_enrolled')->default(0);
+            $table->integer('course_completed')->default(0);
             $table->timestamps();
         });
     }
