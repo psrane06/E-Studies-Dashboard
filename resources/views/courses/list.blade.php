@@ -21,6 +21,21 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                @foreach ($courses as $course)
+                                    <tr>
+                                        {{-- <td>{{ $course->thumbnail }}</td> --}}
+                                        <td>{{ asset('theme/images/logo.png') }}</td>
+                                        <td>{{ $course->course_name }}</td>
+                                        <td>{{ 'Front-end Development' }}</td>
+                                        <td>{{ $course->user_id }}</td>
+                                        <td>{{ $course->description }}</td>
+                                        <td>{{ $course->progress }}</td>
+                                        <td>{{ 'Not Enrolled' }}</td>
+                                        <td><a class="btn" href="/courses/{{ $course->id }}">View</a></td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>

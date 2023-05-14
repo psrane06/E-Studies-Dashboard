@@ -1,6 +1,6 @@
 <footer class="footer mt-auto">
-    <div class="copyright bg-white">
-        <p>
+    <div class="copyright bg-white d-flex" >
+        <p style="align-items: center">
             &copy; <span id="copy-year"></span> Project By Pankaj Rane.
         </p>
     </div>
