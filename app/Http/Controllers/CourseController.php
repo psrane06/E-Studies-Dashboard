@@ -40,13 +40,18 @@ class CourseController extends Controller
     {
         $courses = Course::with('users')->where('user_id', auth()->id())->get();
 
-        /* $courses->each(function ($course) {
-            $course->user_id = $course->users->name;
-        }); */
         $courses->each(function ($course) {
             $user_name = $course->users->pluck('name')->implode(', ');
             $course->user_id = $user_name;
+            $course->users->each(function ($user) use ($course) {
+                $course->progress = $user->pivot->course_completed;
+            });
         });
         return view('courses.list')->with('courses', $courses);
+    }
+
+    public function show(Course $course)
+    {
+        return view('courses.show', ['course' => $course]);
     }
 }

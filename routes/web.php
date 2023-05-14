@@ -40,3 +40,6 @@ Route::get('/courses', [CourseController::class, 'store']);
 
 Route::get('/courses/list', [CourseController::class, 'index']);
 
+// view course
+Route::get('/courses/{course}', [CourseController::class, 'show']);
+
